@@ -1,0 +1,50 @@
+﻿@model TaskViewModel
+
+@{
+    ViewBag.Title = "Add Employee";
+}
+
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form asp-action="AddTask" method="post">
+            <div class="mb-3">
+                <label asp-for="@Model.Title" class="form-label">Title</label>
+                <input asp-for="@Model.Title" class="form-control" aria-required="true" placeholder="Enter name of the task"/>
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Description" class="form-label">Description</label>
+                <input asp-for="@Model.Description" class="form-control" aria-required="true" placeholder="Describe the task"/>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.DueDate" class="form-label">Due Date</label>
+                <input asp-for="@Model.DueDate" class="form-control" aria-required="true"  placeholder="dd/mm/year"/>
+                <span asp-validation-for="DueDate" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.DueDate" class="form-label">Due Date</label>
+                <input asp-for="@Model.DueDate" class="form-control" aria-required="true"  placeholder="dd/mm/year"/>
+                <span asp-validation-for="DueDate" class="text-danger"></span>
+            </div>
+            @*<div class="mb-3">
+                <label asp-for="@Model.EmployeId" class="form-label">Type</label>
+                <select asp-for="@Model.EmployeId" class="form-control">
+                    @foreach (var type in Model.Employee)
+                    {
+                        //<option value="@type.Id">@type.FullName</option>
+                    }
+                </select>
+                <span asp-validation-for="Employee" class="text-danger"></span>
+            </div>*@
+
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="AddTask" />
+            </div>
+        </form>
+    </div>
+</div>

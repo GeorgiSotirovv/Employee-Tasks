@@ -1,4 +1,6 @@
-﻿namespace Inter_Assignment.Models.TaskModels
+﻿using Inter_Assignment.Data.Models;
+
+namespace Inter_Assignment.Models.TaskModels
 {
     public class TaskViewModel
     {
@@ -11,5 +13,7 @@
         public string DueDate { get; set; }
 
         public int? EmployeId { get; set; }
+
+        public IEnumerable<Employee> Employee { get; set; } = new List<Employee>();
     }
 }

@@ -1,13 +1,17 @@
-﻿namespace Inter_Assignment.Services.Contracts
+﻿using Inter_Assignment.Models.TaskModels;
+
+namespace Inter_Assignment.Services.Contracts
 {
     public interface ITaskService
     {
-        Task<IEnumerable<Models.TaskModels.TaskViewModel>> GetAllTasksAsync();
+        Task<IEnumerable<TaskViewModel>> GetAllTasksAsync();
 
-        Task AddTasksAsync(Models.TaskModels.TaskViewModel model);
+        Task AddTasksAsync(TaskViewModel model);
 
-        public void EditTasksInformation(Models.TaskModels.TaskViewModel targetAshtray);
+        public void EditTasksInformation(TaskViewModel targeTask);
 
-        Task RemoveTaskFromDatabaseAsync(int ashtrayId);
+        Task RemoveTaskFromDatabaseAsync(int taskId);
+
+        Task<IEnumerable<TaskViewModel>> GetEmployeeAsync();
     }
 }

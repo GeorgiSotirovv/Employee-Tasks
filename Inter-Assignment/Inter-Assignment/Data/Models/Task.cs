@@ -5,7 +5,7 @@ namespace Inter_Assignment.Data.Models
 {
     public class Task
     {
-        [Required]
+        [Key]
         public int Id { get; set; }
 
         [Required]
