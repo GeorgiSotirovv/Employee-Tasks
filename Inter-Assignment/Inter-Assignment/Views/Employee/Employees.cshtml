@@ -9,19 +9,24 @@
 
 
 <div class="text-center row">
-   
 
+    <form class="input-group-sm">
+        <a class="fs-6 btn btn-success mb-3 p-2 " asp-controller="Employee" asp-action="AddEmployee">Add Employee</a>
+    </form>
 
     @foreach (var employee in Model)
     {
         <div class="card col-4" style="width: 20rem; ">
-            <a href="/Ashtray/Details?id=@employee.Id">
-            </a>
+
             <div class="card-body">
 
                 <h5 class="card-title mt-1">@employee.FullName</h5>
 
             </div>
+
+            <form class="input-group-sm" asp-controller="Employee" asp-action="RemoveEmployee" asp-route-employeeId="@employee.Id">
+                    <input class="fs-6 btn btn-success mb-3 p-2" type="submit" value="Remove" />
+            </form>
 
         </div>
     }
