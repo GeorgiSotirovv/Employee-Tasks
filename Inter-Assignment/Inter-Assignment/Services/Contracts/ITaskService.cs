@@ -1,4 +1,6 @@
-﻿using Inter_Assignment.Models.TaskModels;
+﻿using Inter_Assignment.Data.Models;
+using Inter_Assignment.Models.EmployeeModels;
+using Inter_Assignment.Models.TaskModels;
 
 namespace Inter_Assignment.Services.Contracts
 {
@@ -6,14 +8,14 @@ namespace Inter_Assignment.Services.Contracts
     {
         Task<IEnumerable<TaskViewModel>> GetAllTasksAsync();
 
-        Task AddTasksAsync(TaskViewModel model);
+        System.Threading.Tasks.Task AddTasksAsync(TaskViewModel model);
 
         public void EditTaskInformation(TaskViewModel targeTask);
 
-        Task RemoveTaskFromDatabaseAsync(int taskId);
+        System.Threading.Tasks.Task RemoveTaskFromDatabaseAsync(int taskId);
 
         Task<TaskViewModel> GetInformationForTask(int taskId);
 
-        Task<IEnumerable<TaskViewModel>> GetTaskAsync();
+        Task<IEnumerable<Employee>> GetEmployeeAsync();
     }
 }

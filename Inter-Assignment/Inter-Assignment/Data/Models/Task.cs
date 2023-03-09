@@ -22,5 +22,7 @@ namespace Inter_Assignment.Data.Models
         [ForeignKey(nameof(EmployeId))]
 
         public Employee? Employee { get; set; }
+
+        public IEnumerable<Employee> Employees { get; set; } = new List<Employee>();
     }
 }

@@ -31,16 +31,16 @@
                 <input asp-for="@Model.DueDate" class="form-control" aria-required="true"  placeholder="dd/mm/year"/>
                 <span asp-validation-for="DueDate" class="text-danger"></span>
             </div>
-            @*<div class="mb-3">
-                <label asp-for="@Model.EmployeId" class="form-label">Type</label>
+            <div class="mb-3">
+                <label asp-for="@Model.EmployeId" class="form-label">Employees</label>
                 <select asp-for="@Model.EmployeId" class="form-control">
-                    @foreach (var type in Model.Employee)
+                    @foreach (var type in Model.Employees)
                     {
-                        //<option value="@type.Id">@type.FullName</option>
+                        <option value="@type.Id">@type.FullName</option>
                     }
                 </select>
-                <span asp-validation-for="Employee" class="text-danger"></span>
-            </div>*@
+                <span asp-validation-for="EmployeId" class="text-danger"></span>
+            </div>
 
             <div class="mb-3">
                 <input class="btn btn-primary" type="submit" value="AddTask" />

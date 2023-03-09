@@ -1,4 +1,6 @@
 ﻿using Inter_Assignment.Data;
+using Inter_Assignment.Data.Models;
+using Inter_Assignment.Models.EmployeeModels;
 using Inter_Assignment.Models.TaskModels;
 using Inter_Assignment.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +16,7 @@ namespace Inter_Assignment.Services
             context = _context;
         }
 
-        public async Task AddTasksAsync(TaskViewModel model)
+        public async System.Threading.Tasks.Task AddTasksAsync(TaskViewModel model)
         {
             var entity = new Data.Models.Task()
             {
@@ -63,10 +65,6 @@ namespace Inter_Assignment.Services
                 });
         }
 
-        public async Task<IEnumerable<TaskViewModel>> GetTaskAsync()
-        {
-            return (IEnumerable<TaskViewModel>)context.Employees.ToListAsync();
-        }
 
         public async Task<TaskViewModel> GetInformationForTask(int taskId)
         {
@@ -81,13 +79,19 @@ namespace Inter_Assignment.Services
                 Title = taks.Title,
                 Description = taks.Description,
                 DueDate = taks.DueDate,
-                EmployeId = taks.EmployeId
+                EmployeId = taks.EmployeId,
+                Employees = this.GetEmployeeAsync().Result
             };
 
             return result;
         }
 
-        public async Task RemoveTaskFromDatabaseAsync(int Id)
+        public async Task<IEnumerable<Employee>> GetEmployeeAsync()
+        {
+            return await context.Employees.ToListAsync();
+        }
+
+        public async System.Threading.Tasks.Task RemoveTaskFromDatabaseAsync(int Id)
         {
             var task = await context.Tasks
                 .Where(u => u.Id == Id)

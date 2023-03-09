@@ -25,7 +25,12 @@ namespace Inter_Assignment.Controllers
         [HttpGet]
         public async Task<IActionResult> AddTask()
         {
-            return View();
+            var model = new TaskViewModel()
+            {
+                Employees = await taskService.GetEmployeeAsync()
+            };
+
+            return View(model);
         }
 
         [HttpPost]
@@ -39,8 +44,6 @@ namespace Inter_Assignment.Controllers
             }
             catch (Exception)
             {
-                ModelState.AddModelError("", "Something went wrong");
-
                 return View(model);
             }
         }
@@ -64,6 +67,7 @@ namespace Inter_Assignment.Controllers
                 Description = targetTask.Description,
                 DueDate = targetTask.DueDate,
                 EmployeId = targetTask.EmployeId,
+                Employees = targetTask.Employees,
             };
 
             return View(model);

@@ -14,6 +14,6 @@ namespace Inter_Assignment.Models.TaskModels
 
         public int? EmployeId { get; set; }
 
-        public IEnumerable<Employee> Employee { get; set; } = new List<Employee>();
+        public IEnumerable<Employee> Employees { get; set; } = new List<Employee>();
     }
 }
