@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Inter_Assignment.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230309104934_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20230309120802_InitialMigraton")]
+    partial class InitialMigraton
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,6 +54,44 @@ namespace Inter_Assignment.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Employees");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DateOfBirth = "05/05/2000",
+                            Emial = "IvanDaviod@Gmail.com",
+                            FullName = "Ivan Davidov",
+                            MonthlySalary = 2800.0,
+                            PhoneNumber = "089453164"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DateOfBirth = "11/12/2001",
+                            Emial = "EmilYardanov@Gmail.com",
+                            FullName = "Emil Yardanov",
+                            MonthlySalary = 1700.0,
+                            PhoneNumber = "0897866941"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DateOfBirth = "05/05/2000",
+                            Emial = "BorislavBetrov@Gmail.com",
+                            FullName = "Borislav Betrov",
+                            MonthlySalary = 5000.0,
+                            PhoneNumber = "089666387"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DateOfBirth = "07/01/1995",
+                            Emial = "DavidBatovski@Gmail.com",
+                            FullName = "David Batovski",
+                            MonthlySalary = 3500.0,
+                            PhoneNumber = "0897847519"
+                        });
                 });
 
             modelBuilder.Entity("Inter_Assignment.Data.Models.Task", b =>
@@ -68,8 +106,9 @@ namespace Inter_Assignment.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DueDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("DueDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("EmployeId")
                         .HasColumnType("int");
@@ -83,6 +122,40 @@ namespace Inter_Assignment.Data.Migrations
                     b.HasIndex("EmployeId");
 
                     b.ToTable("Tasks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "You need to clean the computers from the dust",
+                            DueDate = "01/04/2022",
+                            EmployeId = 1,
+                            Title = "Clean the computers"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Clean the peripheral devices for all computers from the dust",
+                            DueDate = "01/04/2022",
+                            EmployeId = 2,
+                            Title = "Clean the peripheral devices"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Check the fuses for all rooms and flors",
+                            DueDate = "01/04/2022",
+                            EmployeId = 3,
+                            Title = "Check the fuses"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Update all computers's windows",
+                            DueDate = "01/04/2022",
+                            EmployeId = 4,
+                            Title = "Update all computers"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

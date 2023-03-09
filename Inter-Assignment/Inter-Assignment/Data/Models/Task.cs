@@ -20,7 +20,7 @@ namespace Inter_Assignment.Data.Models
         public string Description { get; set; } = null!;
 
         [Required]
-        public DateTime DueDate { get; set; }
+        public string DueDate { get; set; }
 
         public int? EmployeId { get; set; }
 
