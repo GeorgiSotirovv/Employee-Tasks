@@ -51,5 +51,36 @@ namespace Inter_Assignment.Controllers
 
             return RedirectToAction(nameof(Task));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> EditTask(int Id)
+        {
+            var targetTask = await taskService.GetInformationForTask(Id);
+
+            var model = new TaskViewModel()
+            {
+                Id = Id,
+                Title = targetTask.Title,
+                Description = targetTask.Description,
+                DueDate = targetTask.DueDate,
+                EmployeId = targetTask.EmployeId,
+            };
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        public IActionResult EditTask(int Id, TaskViewModel targetTask)
+        {
+            if (targetTask == null)
+            {
+                return View();
+            }
+
+            taskService.EditTaskInformation(targetTask);
+
+            return RedirectToAction(nameof(Task));
+        }
     }
 }

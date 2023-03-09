@@ -8,8 +8,10 @@ namespace Inter_Assignment.Services.Contracts
 
         Task AddEmployeeAsync(EmployeeViewModel model);
 
-        public void EditEmployeeInformation(EmployeeViewModel targetAshtray);
+        public void EditEmployeeInformation(EmployeeViewModel targetEmployee);
 
         Task RemoveEmployeeFromDatabaseAsync(int ashtrayId);
+
+        Task<EmployeeViewModel> GetInformationForEmployee(int employeeId);
     }
 }

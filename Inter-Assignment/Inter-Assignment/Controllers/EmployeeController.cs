@@ -53,6 +53,36 @@ namespace Inter_Assignment.Controllers
             return RedirectToAction(nameof(Employees));
         }
 
-        //Edit button
+        [HttpGet]
+        public async Task<IActionResult> EditEmployee(int Id)
+        {
+            var targetEmployee = await employeeService.GetInformationForEmployee(Id);
+
+            var model = new EmployeeViewModel()
+            {
+                Id = Id,
+                FullName = targetEmployee.FullName,
+                Emial = targetEmployee.Emial,
+                PhoneNumber = targetEmployee.PhoneNumber,
+                DateOfBirth = targetEmployee.DateOfBirth,
+                MonthlySalary = targetEmployee.MonthlySalary
+            };
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        public IActionResult EditEmployee(int Id, EmployeeViewModel targetLighter)
+        {
+            if (targetLighter == null)
+            {
+                return View();
+            }
+
+            employeeService.EditEmployeeInformation(targetLighter);
+
+            return RedirectToAction(nameof(Employees));
+        }
     }
 }

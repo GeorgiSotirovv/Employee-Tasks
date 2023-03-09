@@ -67,6 +67,26 @@ namespace Inter_Assignment.Services
                 });
         }
 
+        public async Task<EmployeeViewModel> GetInformationForEmployee(int empoyeeId)
+        {
+            var employee = await context.Employees
+                .Where(u => u.Id == empoyeeId)
+                .FirstOrDefaultAsync();
+
+
+            var result = new EmployeeViewModel
+            {
+                Id = employee.Id,
+                FullName = employee.FullName,
+                Emial = employee.Emial,
+                PhoneNumber = employee.PhoneNumber,
+                DateOfBirth = employee.DateOfBirth,
+                MonthlySalary = employee.MonthlySalary
+            };
+
+            return result;
+        }
+
         public async System.Threading.Tasks.Task RemoveEmployeeFromDatabaseAsync(int Id)
         {
             var employee = await context.Employees

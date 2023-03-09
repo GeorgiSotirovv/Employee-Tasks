@@ -8,10 +8,12 @@ namespace Inter_Assignment.Services.Contracts
 
         Task AddTasksAsync(TaskViewModel model);
 
-        public void EditTasksInformation(TaskViewModel targeTask);
+        public void EditTaskInformation(TaskViewModel targeTask);
 
         Task RemoveTaskFromDatabaseAsync(int taskId);
 
-        Task<IEnumerable<TaskViewModel>> GetEmployeeAsync();
+        Task<TaskViewModel> GetInformationForTask(int taskId);
+
+        Task<IEnumerable<TaskViewModel>> GetTaskAsync();
     }
 }

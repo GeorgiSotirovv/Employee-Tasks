@@ -28,9 +28,22 @@ namespace Inter_Assignment.Services
             await context.SaveChangesAsync();
         }
 
-        public void EditTasksInformation(TaskViewModel targeTask)
+        public void EditTaskInformation(TaskViewModel targeTask)
         {
-            throw new NotImplementedException();
+            var employee = context.Tasks.
+               Where(u => u.Id == targeTask.Id)
+               .FirstOrDefault();
+
+            if (employee == null)
+            {
+                throw new ArgumentException("Invalid Task");
+            }
+
+            employee.Title = targeTask.Title;
+            employee.DueDate = targeTask.DueDate;
+            employee.Description = targeTask.Description;
+
+            context.SaveChanges();
         }
 
         public async Task<IEnumerable<TaskViewModel>> GetAllTasksAsync()
@@ -50,9 +63,28 @@ namespace Inter_Assignment.Services
                 });
         }
 
-        public async Task<IEnumerable<TaskViewModel>> GetEmployeeAsync()
+        public async Task<IEnumerable<TaskViewModel>> GetTaskAsync()
         {
             return (IEnumerable<TaskViewModel>)context.Employees.ToListAsync();
+        }
+
+        public async Task<TaskViewModel> GetInformationForTask(int taskId)
+        {
+            var taks = await context.Tasks
+                .Where(u => u.Id == taskId)
+                .FirstOrDefaultAsync();
+
+
+            var result = new TaskViewModel
+            {
+                Id = taks.Id,
+                Title = taks.Title,
+                Description = taks.Description,
+                DueDate = taks.DueDate,
+                EmployeId = taks.EmployeId
+            };
+
+            return result;
         }
 
         public async Task RemoveTaskFromDatabaseAsync(int Id)
