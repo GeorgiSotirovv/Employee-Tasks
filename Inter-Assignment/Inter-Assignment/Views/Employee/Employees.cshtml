@@ -1,0 +1,29 @@
+﻿@model IEnumerable<EmployeeViewModel>
+
+@{
+    ViewBag.Title = "All Employees";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+
+<div class="text-center row">
+   
+
+
+    @foreach (var employee in Model)
+    {
+        <div class="card col-4" style="width: 20rem; ">
+            <a href="/Ashtray/Details?id=@employee.Id">
+            </a>
+            <div class="card-body">
+
+                <h5 class="card-title mt-1">@employee.FullName</h5>
+
+            </div>
+
+        </div>
+    }
+</div>
+

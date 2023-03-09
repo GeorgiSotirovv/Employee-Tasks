@@ -1,4 +1,4 @@
-﻿using Inter_Assignment.Data.Configuration;
+﻿
 using Inter_Assignment.Data.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

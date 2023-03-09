@@ -5,11 +5,6 @@ namespace Inter_Assignment.Data.Models
 {
     public class Task
     {
-        //Title
-        //Description
-        //Assignee
-        //Due Date
-
         [Required]
         public int Id { get; set; }
 
