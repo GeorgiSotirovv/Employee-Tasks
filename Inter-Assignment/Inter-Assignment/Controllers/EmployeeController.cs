@@ -84,5 +84,33 @@ namespace Inter_Assignment.Controllers
 
             return RedirectToAction(nameof(Employees));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> EmployeStatistic()
+        {
+            var targetEmployee = await employeeService.GetFiveEmployeeWithMostComplitedTasks();
+
+            return View(targetEmployee);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AddReview()
+        {
+
+            var model = new EmployeeReviewViewModel()
+            {
+                Employees = await employeeService.GetEmployeeAsync()
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult AddReview(EmployeeReviewViewModel model)
+        {
+            employeeService.AddReview(model);
+
+            return RedirectToAction(nameof(Employees));
+        }
     }
 }

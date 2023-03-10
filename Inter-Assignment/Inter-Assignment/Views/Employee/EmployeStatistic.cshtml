@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Employee>
+
+@{
+    ViewBag.Title = "Statistics";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+
+<div class="text-center row">
+    @foreach (var employee in Model)
+    {
+        <div class="card col-4" style="width: 20rem; ">
+
+            <div class="card-body">
+
+                <h5 class="card-title mt-1">@employee.FullName</h5>
+                <h5 class="card-title mt-1">@employee.NumberOfCompletedTasks</h5>
+
+            </div>
+        </div>
+    }
+</div>
+

@@ -16,6 +16,8 @@ namespace Inter_Assignment.Data
 
         public DbSet<Models.Task> Tasks { get; set; }
 
+        public DbSet<EmployeeReview> EmployeeReviews { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Models.Task>()

@@ -15,6 +15,11 @@ namespace Inter_Assignment.Services
             context = _context;
         }
 
+        public async Task<IEnumerable<Employee>> GetEmployeeAsync()
+        {
+            return await context.Employees.ToListAsync();
+        }
+
         public async System.Threading.Tasks.Task AddEmployeeAsync(EmployeeViewModel model)
         {
             var entity = new Employee()
@@ -28,6 +33,20 @@ namespace Inter_Assignment.Services
             };
             await context.Employees.AddAsync(entity);
             await context.SaveChangesAsync();
+        }
+
+        public EmployeeReviewViewModel AddReview(EmployeeReviewViewModel model)
+        {
+            var entity = new EmployeeReview()
+            {
+                EmployeeId = model.EmployeId,
+                Review = model.Review,
+            };
+
+            context.EmployeeReviews.Add(entity);
+            context.SaveChanges();
+
+            return model;
         }
 
         public void EditEmployeeInformation(EmployeeViewModel targetEmployee)
@@ -65,6 +84,15 @@ namespace Inter_Assignment.Services
                     DateOfBirth = m.DateOfBirth,
                     MonthlySalary = m.MonthlySalary
                 });
+        }
+
+
+        public async Task<IEnumerable<Employee>> GetFiveEmployeeWithMostComplitedTasks()
+        {
+            return await context.Employees
+                .OrderByDescending(b => b.NumberOfCompletedTasks)
+                .Take(5)
+                .ToListAsync();
         }
 
         public async Task<EmployeeViewModel> GetInformationForEmployee(int empoyeeId)
