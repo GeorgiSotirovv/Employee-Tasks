@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Inter_Assignment.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230309120802_InitialMigraton")]
-    partial class InitialMigraton
+    [Migration("20230310091323_InitailMigration")]
+    partial class InitailMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,6 +47,9 @@ namespace Inter_Assignment.Data.Migrations
                     b.Property<double>("MonthlySalary")
                         .HasColumnType("float");
 
+                    b.Property<int>("NumberOfCompletedTasks")
+                        .HasColumnType("int");
+
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -63,6 +66,7 @@ namespace Inter_Assignment.Data.Migrations
                             Emial = "IvanDaviod@Gmail.com",
                             FullName = "Ivan Davidov",
                             MonthlySalary = 2800.0,
+                            NumberOfCompletedTasks = 0,
                             PhoneNumber = "089453164"
                         },
                         new
@@ -72,6 +76,7 @@ namespace Inter_Assignment.Data.Migrations
                             Emial = "EmilYardanov@Gmail.com",
                             FullName = "Emil Yardanov",
                             MonthlySalary = 1700.0,
+                            NumberOfCompletedTasks = 0,
                             PhoneNumber = "0897866941"
                         },
                         new
@@ -81,6 +86,7 @@ namespace Inter_Assignment.Data.Migrations
                             Emial = "BorislavBetrov@Gmail.com",
                             FullName = "Borislav Betrov",
                             MonthlySalary = 5000.0,
+                            NumberOfCompletedTasks = 0,
                             PhoneNumber = "089666387"
                         },
                         new
@@ -90,6 +96,7 @@ namespace Inter_Assignment.Data.Migrations
                             Emial = "DavidBatovski@Gmail.com",
                             FullName = "David Batovski",
                             MonthlySalary = 3500.0,
+                            NumberOfCompletedTasks = 0,
                             PhoneNumber = "0897847519"
                         });
                 });

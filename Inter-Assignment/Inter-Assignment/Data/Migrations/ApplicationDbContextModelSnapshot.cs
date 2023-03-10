@@ -45,16 +45,14 @@ namespace Inter_Assignment.Data.Migrations
                     b.Property<double>("MonthlySalary")
                         .HasColumnType("float");
 
+                    b.Property<int>("NumberOfCompletedTasks")
+                        .HasColumnType("int");
+
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TaskId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TaskId");
 
                     b.ToTable("Employees");
 
@@ -66,6 +64,7 @@ namespace Inter_Assignment.Data.Migrations
                             Emial = "IvanDaviod@Gmail.com",
                             FullName = "Ivan Davidov",
                             MonthlySalary = 2800.0,
+                            NumberOfCompletedTasks = 0,
                             PhoneNumber = "089453164"
                         },
                         new
@@ -75,6 +74,7 @@ namespace Inter_Assignment.Data.Migrations
                             Emial = "EmilYardanov@Gmail.com",
                             FullName = "Emil Yardanov",
                             MonthlySalary = 1700.0,
+                            NumberOfCompletedTasks = 0,
                             PhoneNumber = "0897866941"
                         },
                         new
@@ -84,6 +84,7 @@ namespace Inter_Assignment.Data.Migrations
                             Emial = "BorislavBetrov@Gmail.com",
                             FullName = "Borislav Betrov",
                             MonthlySalary = 5000.0,
+                            NumberOfCompletedTasks = 0,
                             PhoneNumber = "089666387"
                         },
                         new
@@ -93,6 +94,7 @@ namespace Inter_Assignment.Data.Migrations
                             Emial = "DavidBatovski@Gmail.com",
                             FullName = "David Batovski",
                             MonthlySalary = 3500.0,
+                            NumberOfCompletedTasks = 0,
                             PhoneNumber = "0897847519"
                         });
                 });
@@ -363,13 +365,6 @@ namespace Inter_Assignment.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Inter_Assignment.Data.Models.Employee", b =>
-                {
-                    b.HasOne("Inter_Assignment.Data.Models.Task", null)
-                        .WithMany("Employees")
-                        .HasForeignKey("TaskId");
-                });
-
             modelBuilder.Entity("Inter_Assignment.Data.Models.Task", b =>
                 {
                     b.HasOne("Inter_Assignment.Data.Models.Employee", "Employee")
@@ -428,11 +423,6 @@ namespace Inter_Assignment.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Inter_Assignment.Data.Models.Task", b =>
-                {
-                    b.Navigation("Employees");
                 });
 #pragma warning restore 612, 618
         }

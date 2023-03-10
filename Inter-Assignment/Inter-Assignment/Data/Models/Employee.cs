@@ -9,7 +9,7 @@ namespace Inter_Assignment.Data.Models
         //Phone
         //DateOfBirth
         //MonthlySalary
-        [Required]
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -26,5 +26,8 @@ namespace Inter_Assignment.Data.Models
 
         [Required]
         public double MonthlySalary { get; set; }
+
+        [Required]
+        public int NumberOfCompletedTasks { get; set; }
     }
 }

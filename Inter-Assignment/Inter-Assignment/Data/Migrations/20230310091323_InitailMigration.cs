@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Inter_Assignment.Data.Migrations
 {
-    public partial class InitialMigraton : Migration
+    public partial class InitailMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -58,7 +58,8 @@ namespace Inter_Assignment.Data.Migrations
                     Emial = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateOfBirth = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MonthlySalary = table.Column<double>(type: "float", nullable: false)
+                    MonthlySalary = table.Column<double>(type: "float", nullable: false),
+                    NumberOfCompletedTasks = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -194,13 +195,13 @@ namespace Inter_Assignment.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Employees",
-                columns: new[] { "Id", "DateOfBirth", "Emial", "FullName", "MonthlySalary", "PhoneNumber" },
+                columns: new[] { "Id", "DateOfBirth", "Emial", "FullName", "MonthlySalary", "NumberOfCompletedTasks", "PhoneNumber" },
                 values: new object[,]
                 {
-                    { 1, "05/05/2000", "IvanDaviod@Gmail.com", "Ivan Davidov", 2800.0, "089453164" },
-                    { 2, "11/12/2001", "EmilYardanov@Gmail.com", "Emil Yardanov", 1700.0, "0897866941" },
-                    { 3, "05/05/2000", "BorislavBetrov@Gmail.com", "Borislav Betrov", 5000.0, "089666387" },
-                    { 4, "07/01/1995", "DavidBatovski@Gmail.com", "David Batovski", 3500.0, "0897847519" }
+                    { 1, "05/05/2000", "IvanDaviod@Gmail.com", "Ivan Davidov", 2800.0, 0, "089453164" },
+                    { 2, "11/12/2001", "EmilYardanov@Gmail.com", "Emil Yardanov", 1700.0, 0, "0897866941" },
+                    { 3, "05/05/2000", "BorislavBetrov@Gmail.com", "Borislav Betrov", 5000.0, 0, "089666387" },
+                    { 4, "07/01/1995", "DavidBatovski@Gmail.com", "David Batovski", 3500.0, 0, "0897847519" }
                 });
 
             migrationBuilder.InsertData(
