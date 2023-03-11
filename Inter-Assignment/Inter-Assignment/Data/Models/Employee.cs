@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Inter_Assignment.Data.Models
@@ -25,7 +26,7 @@ namespace Inter_Assignment.Data.Models
 
         [Required]
 
-        public string DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; } = DateTime.Now;
 
         [Required]
         public double MonthlySalary { get; set; }

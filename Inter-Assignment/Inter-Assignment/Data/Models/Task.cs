@@ -14,8 +14,8 @@ namespace Inter_Assignment.Data.Models
         [Required]
         public string Description { get; set; } = null!;
 
-        [Required]
-        public string DueDate { get; set; }
+
+        public DateTime DueDate { get; set; } = DateTime.Now;
 
         [Required]
         public bool IsCompleted { get; set; }

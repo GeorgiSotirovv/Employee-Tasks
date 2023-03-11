@@ -1,4 +1,5 @@
 ﻿using Inter_Assignment.Data.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Inter_Assignment.Models.EmployeeModels
 {
@@ -6,14 +7,18 @@ namespace Inter_Assignment.Models.EmployeeModels
     {
         public int Id { get; set; }
 
+        [Required]
         public string FullName { get; set; } = null!;
-        
+
+        [Required]
         public string Emial { get; set; } = null!;
-       
+
+        [Required]
         public string PhoneNumber { get; set; } = null!;
         
-        public string DateOfBirth { get; set; } 
-        
+        public DateTime DateOfBirth { get; set; }
+
+        [Required]
         public double MonthlySalary { get; set; }
 
         public int NumberOfCompletedTasks { get; set; }

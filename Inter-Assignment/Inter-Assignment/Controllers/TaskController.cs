@@ -44,7 +44,7 @@ namespace Inter_Assignment.Controllers
             }
             catch (Exception)
             {
-                return View(model);
+                return RedirectToAction(nameof(AddTask));
             }
         }
 

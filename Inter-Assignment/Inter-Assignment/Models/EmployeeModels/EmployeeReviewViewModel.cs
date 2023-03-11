@@ -9,6 +9,7 @@ namespace Inter_Assignment.Models.EmployeeModels
 
         public int EmployeId { get; set; }
 
+        [Required]
         public string Review { get; set; }
 
         public IEnumerable<Employee> Employees { get; set; } = new List<Employee>();

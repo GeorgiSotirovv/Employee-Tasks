@@ -33,13 +33,8 @@
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label asp-for="@Model.DateOfBirth" class="form-label">Date of birth</label>
-                <textarea asp-for="@Model.DateOfBirth" class="form-control" aria-required="true" rows="5" placeholder=""></textarea>
-                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="@Model.MonthlySalary" class="form-label">Monthly salary</label>
-                <textarea asp-for="@Model.MonthlySalary" class="form-control" aria-required="true" rows="5" placeholder=""></textarea>
+                <label asp-for="@Model.MonthlySalary" class="form-label">Monthly Salary </label>
+                <input asp-for="@Model.MonthlySalary" class="form-control" aria-required="true" placeholder="Enter valid number"/>
                 <span asp-validation-for="MonthlySalary" class="text-danger"></span>
             </div>
             <div class="mb-3">

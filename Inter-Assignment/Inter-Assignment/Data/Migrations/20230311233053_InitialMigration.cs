@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Inter_Assignment.Data.Migrations
 {
-    public partial class InitailMigration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -55,11 +55,12 @@ namespace Inter_Assignment.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Emial = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateOfBirth = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MonthlySalary = table.Column<double>(type: "float", nullable: false),
-                    NumberOfCompletedTasks = table.Column<int>(type: "int", nullable: false)
+                    NumberOfCompletedTasks = table.Column<int>(type: "int", nullable: false),
+                    EmployeeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -173,6 +174,26 @@ namespace Inter_Assignment.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EmployeeReviews",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Review = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmployeeId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmployeeReviews", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EmployeeReviews_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Tasks",
                 columns: table => new
                 {
@@ -180,7 +201,8 @@ namespace Inter_Assignment.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DueDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsCompleted = table.Column<bool>(type: "bit", nullable: false),
                     EmployeId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -195,24 +217,24 @@ namespace Inter_Assignment.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Employees",
-                columns: new[] { "Id", "DateOfBirth", "Emial", "FullName", "MonthlySalary", "NumberOfCompletedTasks", "PhoneNumber" },
+                columns: new[] { "Id", "DateOfBirth", "Email", "EmployeeId", "FullName", "MonthlySalary", "NumberOfCompletedTasks", "PhoneNumber" },
                 values: new object[,]
                 {
-                    { 1, "05/05/2000", "IvanDaviod@Gmail.com", "Ivan Davidov", 2800.0, 0, "089453164" },
-                    { 2, "11/12/2001", "EmilYardanov@Gmail.com", "Emil Yardanov", 1700.0, 0, "0897866941" },
-                    { 3, "05/05/2000", "BorislavBetrov@Gmail.com", "Borislav Betrov", 5000.0, 0, "089666387" },
-                    { 4, "07/01/1995", "DavidBatovski@Gmail.com", "David Batovski", 3500.0, 0, "0897847519" }
+                    { 1, new DateTime(2000, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "IvanDaviod@Gmail.com", 0, "Ivan Davidov", 2800.0, 0, "089453164" },
+                    { 2, new DateTime(2001, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "EmilYardanov@Gmail.com", 0, "Emil Yardanov", 1700.0, 0, "0897866941" },
+                    { 3, new DateTime(1955, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "BorislavBetrov@Gmail.com", 0, "Borislav Petrov", 5000.0, 0, "089666387" },
+                    { 4, new DateTime(2022, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "DavidBatovski@Gmail.com", 0, "David Batovski", 3500.0, 1, "0897847519" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Tasks",
-                columns: new[] { "Id", "Description", "DueDate", "EmployeId", "Title" },
+                columns: new[] { "Id", "Description", "DueDate", "EmployeId", "IsCompleted", "Title" },
                 values: new object[,]
                 {
-                    { 1, "You need to clean the computers from the dust", "01/04/2022", 1, "Clean the computers" },
-                    { 2, "Clean the peripheral devices for all computers from the dust", "01/04/2022", 2, "Clean the peripheral devices" },
-                    { 3, "Check the fuses for all rooms and flors", "01/04/2022", 3, "Check the fuses" },
-                    { 4, "Update all computers's windows", "01/04/2022", 4, "Update all computers" }
+                    { 1, "You need to clean the computers from the dust", new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, false, "Clean the computers" },
+                    { 2, "Clean the peripheral devices for all computers from the dust", new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, false, "Clean the peripheral devices" },
+                    { 3, "Check the fuses for all rooms and flors", new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, false, "Check the fuses" },
+                    { 4, "Update all computers's windows", new DateTime(2012, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, true, "Update all computers" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -255,6 +277,11 @@ namespace Inter_Assignment.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_EmployeeReviews_EmployeeId",
+                table: "EmployeeReviews",
+                column: "EmployeeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Tasks_EmployeId",
                 table: "Tasks",
                 column: "EmployeId");
@@ -276,6 +303,9 @@ namespace Inter_Assignment.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "EmployeeReviews");
 
             migrationBuilder.DropTable(
                 name: "Tasks");

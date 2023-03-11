@@ -22,11 +22,14 @@
             <div class="card col-4" style="width: 20rem; ">
 
                 <div class="card-body">
-
-                    <h5 class="card-title mt-1">@task.Title</h5>
-                    <h5 class="card-title mt-1">@task.Description</h5>
-                    <h5 class="card-title mt-1">@task.DueDate</h5>
-                    <h5 class="card-title mt-1">@task.Employee.FullName</h5>
+                    <h5 class="card-title mt-1">Title:</h5>
+                    <h7 class="card-title mt-1">@task.Title</h7>
+                    <h5 class="card-title mt-1">Description:</h5>
+                    <h7 class="card-title mt-1">@task.Description</h7>
+                    <h5 class="card-title mt-1">DueDate:</h5>
+                    <h7 class="card-title mt-1">@task.DueDate</h7>
+                    <h5 class="card-title mt-1">Assign to:</h5>
+                    <h7 class="card-title mt-1">@task.Employee.FullName</h7>
 
                 </div>
 
@@ -49,10 +52,14 @@
 
                 <div class="card-body">
 
-                    <h5 class="card-title mt-1">@task.Title</h5>
-                    <h5 class="card-title mt-1">@task.Description</h5>
-                    <h5 class="card-title mt-1">@task.DueDate</h5>
-                    <h5 class="card-title mt-1">@task.Employee.FullName</h5>
+                    <h5 class="card-title mt-1">Title:</h5>
+                    <h7 class="card-title mt-1">@task.Title</h7>
+                    <h5 class="card-title mt-1">Description:</h5>
+                    <h7 class="card-title mt-1">@task.Description</h7>
+                    <h5 class="card-title mt-1">DueDate:</h5>
+                    <h7 class="card-title mt-1">@task.DueDate</h7>
+                    <h5 class="card-title mt-1">Assign to:</h5>
+                    <h7 class="card-title mt-1">@task.Employee.FullName</h7>
                 </div>
 
                 <form class="input-group-sm" asp-controller="Task" asp-action="RemoveTask" asp-route-employeeId="@task.Id">

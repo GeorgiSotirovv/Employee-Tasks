@@ -1,4 +1,5 @@
 ﻿using Inter_Assignment.Data.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Inter_Assignment.Models.TaskModels
 {
@@ -6,12 +7,15 @@ namespace Inter_Assignment.Models.TaskModels
     {
         public int Id { get; set; }
 
+        [Required]
         public string Title { get; set; } = null!;
 
+        [Required]
         public string Description { get; set; } = null!;
 
-        public string DueDate { get; set; }
+        public DateTime DueDate { get; set; }
 
+        [Required]
         public int? EmployeId { get; set; }
 
         public bool IsCompleted { get; set; }

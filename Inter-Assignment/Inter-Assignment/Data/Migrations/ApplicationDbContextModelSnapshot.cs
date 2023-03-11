@@ -30,9 +30,8 @@ namespace Inter_Assignment.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("DateOfBirth")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -63,7 +62,7 @@ namespace Inter_Assignment.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateOfBirth = "10",
+                            DateOfBirth = new DateTime(2000, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "IvanDaviod@Gmail.com",
                             EmployeeId = 0,
                             FullName = "Ivan Davidov",
@@ -74,7 +73,7 @@ namespace Inter_Assignment.Data.Migrations
                         new
                         {
                             Id = 2,
-                            DateOfBirth = "10",
+                            DateOfBirth = new DateTime(2001, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "EmilYardanov@Gmail.com",
                             EmployeeId = 0,
                             FullName = "Emil Yardanov",
@@ -85,10 +84,10 @@ namespace Inter_Assignment.Data.Migrations
                         new
                         {
                             Id = 3,
-                            DateOfBirth = "10",
+                            DateOfBirth = new DateTime(1955, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "BorislavBetrov@Gmail.com",
                             EmployeeId = 0,
-                            FullName = "Borislav Betrov",
+                            FullName = "Borislav Petrov",
                             MonthlySalary = 5000.0,
                             NumberOfCompletedTasks = 0,
                             PhoneNumber = "089666387"
@@ -96,12 +95,12 @@ namespace Inter_Assignment.Data.Migrations
                         new
                         {
                             Id = 4,
-                            DateOfBirth = "10",
+                            DateOfBirth = new DateTime(2022, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "DavidBatovski@Gmail.com",
                             EmployeeId = 0,
                             FullName = "David Batovski",
                             MonthlySalary = 3500.0,
-                            NumberOfCompletedTasks = 0,
+                            NumberOfCompletedTasks = 1,
                             PhoneNumber = "0897847519"
                         });
                 });
@@ -140,9 +139,8 @@ namespace Inter_Assignment.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DueDate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("DueDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("EmployeId")
                         .HasColumnType("int");
@@ -165,7 +163,7 @@ namespace Inter_Assignment.Data.Migrations
                         {
                             Id = 1,
                             Description = "You need to clean the computers from the dust",
-                            DueDate = "01/04/2022",
+                            DueDate = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmployeId = 1,
                             IsCompleted = false,
                             Title = "Clean the computers"
@@ -174,7 +172,7 @@ namespace Inter_Assignment.Data.Migrations
                         {
                             Id = 2,
                             Description = "Clean the peripheral devices for all computers from the dust",
-                            DueDate = "01/04/2022",
+                            DueDate = new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmployeId = 2,
                             IsCompleted = false,
                             Title = "Clean the peripheral devices"
@@ -183,7 +181,7 @@ namespace Inter_Assignment.Data.Migrations
                         {
                             Id = 3,
                             Description = "Check the fuses for all rooms and flors",
-                            DueDate = "01/04/2022",
+                            DueDate = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmployeId = 3,
                             IsCompleted = false,
                             Title = "Check the fuses"
@@ -192,7 +190,7 @@ namespace Inter_Assignment.Data.Migrations
                         {
                             Id = 4,
                             Description = "Update all computers's windows",
-                            DueDate = "01/04/2022",
+                            DueDate = new DateTime(2012, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             EmployeId = 4,
                             IsCompleted = true,
                             Title = "Update all computers"

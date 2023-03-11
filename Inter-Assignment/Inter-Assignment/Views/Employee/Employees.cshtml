@@ -9,9 +9,17 @@
 
 
 <div class="text-center row">
+    
+    <form class="input-group-sm">
+        <a class="fs-6 btn btn-success mb-3 p-2 " asp-controller="Employee" asp-action="EmployeStatistic">Statistics</a>
+    </form>
 
     <form class="input-group-sm">
         <a class="fs-6 btn btn-success mb-3 p-2 " asp-controller="Employee" asp-action="AddEmployee">Add Employee</a>
+    </form>
+
+    <form class="input-group-sm">
+        <a class="fs-6 btn btn-success mb-3 p-2 " asp-controller="Employee" asp-action="AddReview">Add review for employees</a>
     </form>
 
     @foreach (var employee in Model)
@@ -33,20 +41,12 @@
             </form>
 
             <form class="input-group-sm" asp-controller="Employee" asp-action="Review" asp-route-Id="@employee.Id">
-                <a class="fs-6 btn btn-success mb-3 p-2 " asp-controller="Employee" asp-action="Review" asp-route-Id="@employee.Id"    >Review</a>
+                <a class="fs-6 btn btn-success mb-3 p-2 " asp-controller="Employee" asp-action="Review" asp-route-Id="@employee.Id">Review</a>
             </form>
 
             <a class="fs-6 btn btn-success mb-3 p-2" href="/Employee/EditEmployee?id=@employee.Id" aria-required="true">Edit</a>
 
         </div>
     }
-
-    <form class="input-group-sm">
-        <a class="fs-6 btn btn-success mb-3 p-2 " asp-controller="Employee" asp-action="EmployeStatistic">Stat</a>
-    </form>
-
-
-
-
 </div>
 

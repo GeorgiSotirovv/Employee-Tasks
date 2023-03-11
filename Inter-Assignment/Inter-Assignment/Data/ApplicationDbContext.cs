@@ -32,8 +32,10 @@ namespace Inter_Assignment.Data
                     FullName = "Ivan Davidov",
                     Email = "IvanDaviod@Gmail.com",
                     PhoneNumber = "089453164",
-                    DateOfBirth = "10",
-                    //DateOfBirth = DateTime.ParseExact("09/01/2009", "d",CultureInfo.InvariantCulture),
+                    DateOfBirth = DateTime.ParseExact("2000-04-05", "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                    //DateOfBirth = DateTime.ParseExact("15/06/2015", "dd/MM/yyyy", null),
+                    //DateOfBirth = "2000/04/05",
+                    //DateOfBirth = new DateTime(2000, 2, 15),
                     MonthlySalary = 2800
                 },
 
@@ -43,17 +45,17 @@ namespace Inter_Assignment.Data
                     FullName = "Emil Yardanov",
                     Email = "EmilYardanov@Gmail.com",
                     PhoneNumber = "0897866941",
-                    DateOfBirth = "10",
+                    DateOfBirth = DateTime.ParseExact("2001-02-07", "yyyy-MM-dd", CultureInfo.InvariantCulture),
                     MonthlySalary = 1700
                 },
 
                 new Employee()
                 {
                     Id = 3,
-                    FullName = "Borislav Betrov",
+                    FullName = "Borislav Petrov",
                     Email = "BorislavBetrov@Gmail.com",
                     PhoneNumber = "089666387",
-                    DateOfBirth = "10",
+                    DateOfBirth = DateTime.ParseExact("1955-11-26", "yyyy-MM-dd", CultureInfo.InvariantCulture),
                     MonthlySalary = 5000
                 },
 
@@ -63,8 +65,9 @@ namespace Inter_Assignment.Data
                     FullName = "David Batovski",
                     Email = "DavidBatovski@Gmail.com",
                     PhoneNumber = "0897847519",
-                    DateOfBirth = "10",
-                    MonthlySalary = 3500
+                    DateOfBirth = DateTime.ParseExact("2022-08-08", "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                    MonthlySalary = 3500,
+                    NumberOfCompletedTasks = 1
                 });
 
             builder
@@ -74,7 +77,8 @@ namespace Inter_Assignment.Data
                     Id = 1,
                     Title = "Clean the computers",
                     Description = "You need to clean the computers from the dust",
-                    DueDate = "01/04/2022",
+                    DueDate = DateTime.ParseExact("2023-01-01", "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                    //DueDate = new DateTime(2000, 2, 15),
                     EmployeId = 1,
                     IsCompleted = false
                 },
@@ -84,7 +88,7 @@ namespace Inter_Assignment.Data
                     Id = 2,
                     Title = "Clean the peripheral devices",
                     Description = "Clean the peripheral devices for all computers from the dust",
-                    DueDate = "01/04/2022",
+                    DueDate = DateTime.ParseExact("2023-02-11", "yyyy-MM-dd", CultureInfo.InvariantCulture),
                     EmployeId = 2,
                     IsCompleted = false
                 },
@@ -94,7 +98,7 @@ namespace Inter_Assignment.Data
                     Id = 3,
                     Title = "Check the fuses",
                     Description = "Check the fuses for all rooms and flors",
-                    DueDate = "01/04/2022",
+                    DueDate = DateTime.ParseExact("2023-03-01", "yyyy-MM-dd", CultureInfo.InvariantCulture),
                     EmployeId = 3,
                     IsCompleted = false
                 },
@@ -104,7 +108,7 @@ namespace Inter_Assignment.Data
                     Id = 4,
                     Title = "Update all computers",
                     Description = "Update all computers's windows",
-                    DueDate = "01/04/2022",
+                    DueDate = DateTime.ParseExact("2012-03-05", "yyyy-MM-dd", CultureInfo.InvariantCulture),
                     EmployeId = 4,
                     IsCompleted = true
                 });

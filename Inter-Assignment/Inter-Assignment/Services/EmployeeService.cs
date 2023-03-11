@@ -3,6 +3,7 @@ using Inter_Assignment.Data.Models;
 using Inter_Assignment.Models.EmployeeModels;
 using Inter_Assignment.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 namespace Inter_Assignment.Services
 {
@@ -61,7 +62,6 @@ namespace Inter_Assignment.Services
             }
 
             employee.FullName = targetEmployee.FullName;
-            employee.DateOfBirth = targetEmployee.DateOfBirth;
             employee.Email = targetEmployee.Emial;
             employee.PhoneNumber = targetEmployee.PhoneNumber;
             employee.MonthlySalary = targetEmployee.MonthlySalary;
@@ -81,7 +81,7 @@ namespace Inter_Assignment.Services
                     FullName = m.FullName,
                     Emial = m.Email,
                     PhoneNumber = m.PhoneNumber,
-                    //DateOfBirth = DateTime.ToString(m.DateOfBirth),
+                    DateOfBirth = m.DateOfBirth,
                     MonthlySalary = m.MonthlySalary
                 });
         }
@@ -108,7 +108,6 @@ namespace Inter_Assignment.Services
                 FullName = employee.FullName,
                 Emial = employee.Email,
                 PhoneNumber = employee.PhoneNumber,
-                DateOfBirth = employee.DateOfBirth,
                 MonthlySalary = employee.MonthlySalary
             };
 

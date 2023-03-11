@@ -64,7 +64,6 @@ namespace Inter_Assignment.Controllers
                 FullName = targetEmployee.FullName,
                 Emial = targetEmployee.Emial,
                 PhoneNumber = targetEmployee.PhoneNumber,
-                DateOfBirth = targetEmployee.DateOfBirth,
                 MonthlySalary = targetEmployee.MonthlySalary
             };
 
@@ -73,16 +72,25 @@ namespace Inter_Assignment.Controllers
 
 
         [HttpPost]
-        public IActionResult EditEmployee(int Id, EmployeeViewModel targetLighter)
+        public IActionResult EditEmployee(int Id, EmployeeViewModel targetEmployee)
         {
-            if (targetLighter == null)
+            if (targetEmployee == null)
             {
                 return View();
             }
 
-            employeeService.EditEmployeeInformation(targetLighter);
+            try
+            {
+                employeeService.EditEmployeeInformation(targetEmployee);
 
-            return RedirectToAction(nameof(Employees));
+                return RedirectToAction(nameof(Employees));
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", "Something went wrong");
+
+                return View(targetEmployee);
+            }
         }
 
         [HttpGet]
@@ -108,9 +116,18 @@ namespace Inter_Assignment.Controllers
         [HttpPost]
         public IActionResult AddReview(EmployeeReviewViewModel model)
         {
-            employeeService.AddReview(model);
+            try
+            {
+                employeeService.AddReview(model);
 
-            return RedirectToAction(nameof(Employees));
+                return RedirectToAction(nameof(Employees));
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError("", "Something went wrong");
+
+                return RedirectToAction(nameof(AddReview));
+            }
         }
 
 
