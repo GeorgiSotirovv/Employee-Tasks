@@ -10,7 +10,7 @@ namespace Inter_Assignment.Services.Contracts
 
         System.Threading.Tasks.Task AddTasksAsync(TaskViewModel model);
 
-        public void EditTaskInformation(TaskViewModel targeTask);
+        public void EditTaskInformation(TaskViewModel targeTask, int IsCompletedId);
 
         System.Threading.Tasks.Task RemoveTaskFromDatabaseAsync(int taskId);
 

@@ -14,6 +14,8 @@ namespace Inter_Assignment.Models.TaskModels
 
         public int? EmployeId { get; set; }
 
+        public bool IsCompleted { get; set; }
+
         public Employee Employee { get; set; }
 
         public IEnumerable<Employee> Employees { get; set; } = new List<Employee>();

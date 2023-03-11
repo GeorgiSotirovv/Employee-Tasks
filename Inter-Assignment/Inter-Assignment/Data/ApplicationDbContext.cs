@@ -75,7 +75,8 @@ namespace Inter_Assignment.Data
                     Title = "Clean the computers",
                     Description = "You need to clean the computers from the dust",
                     DueDate = "01/04/2022",
-                    EmployeId = 1
+                    EmployeId = 1,
+                    IsCompleted = false
                 },
 
                 new Models.Task()
@@ -84,7 +85,8 @@ namespace Inter_Assignment.Data
                     Title = "Clean the peripheral devices",
                     Description = "Clean the peripheral devices for all computers from the dust",
                     DueDate = "01/04/2022",
-                    EmployeId = 2
+                    EmployeId = 2,
+                    IsCompleted = false
                 },
 
                 new Models.Task()
@@ -93,7 +95,8 @@ namespace Inter_Assignment.Data
                     Title = "Check the fuses",
                     Description = "Check the fuses for all rooms and flors",
                     DueDate = "01/04/2022",
-                    EmployeId = 3
+                    EmployeId = 3,
+                    IsCompleted = false
                 },
 
                 new Models.Task()
@@ -102,7 +105,8 @@ namespace Inter_Assignment.Data
                     Title = "Update all computers",
                     Description = "Update all computers's windows",
                     DueDate = "01/04/2022",
-                    EmployeId = 4
+                    EmployeId = 4,
+                    IsCompleted = true
                 });
 
             base.OnModelCreating(builder);

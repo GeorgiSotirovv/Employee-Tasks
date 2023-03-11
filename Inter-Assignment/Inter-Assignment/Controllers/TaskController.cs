@@ -68,6 +68,8 @@ namespace Inter_Assignment.Controllers
                 DueDate = targetTask.DueDate,
                 EmployeId = targetTask.EmployeId,
                 Employees = targetTask.Employees,
+                IsCompleted = targetTask.IsCompleted,
+                Employee = targetTask.Employee
             };
 
             return View(model);
@@ -75,14 +77,14 @@ namespace Inter_Assignment.Controllers
 
 
         [HttpPost]
-        public IActionResult EditTask(int Id, TaskViewModel targetTask)
+        public IActionResult EditTask(int Id, TaskViewModel targetTask, int IsCompletedId)
         {
             if (targetTask == null)
             {
                 return View();
             }
 
-            taskService.EditTaskInformation(targetTask);
+            taskService.EditTaskInformation(targetTask, IsCompletedId);
 
             return RedirectToAction(nameof(Task));
         }

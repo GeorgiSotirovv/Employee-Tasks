@@ -14,26 +14,55 @@
         <a class="fs-6 btn btn-success mb-3 p-2 " asp-controller="Task" asp-action="AddTask">Add Task</a>
     </form>
 
+    <h2 class="text-center">Tasks in process</h2>
     @foreach (var task in Model)
     {
-        <div class="card col-4" style="width: 20rem; ">
+        if (task.IsCompleted == false)
+        {
+            <div class="card col-4" style="width: 20rem; ">
 
-            <div class="card-body">
+                <div class="card-body">
 
-                <h5 class="card-title mt-1">@task.Title</h5>
-                <h5 class="card-title mt-1">@task.Description</h5>
-                <h5 class="card-title mt-1">@task.DueDate</h5>
-                <h5 class="card-title mt-1">@task.Employee.FullName</h5>
+                    <h5 class="card-title mt-1">@task.Title</h5>
+                    <h5 class="card-title mt-1">@task.Description</h5>
+                    <h5 class="card-title mt-1">@task.DueDate</h5>
+                    <h5 class="card-title mt-1">@task.Employee.FullName</h5>
+
+                </div>
+
+                <form class="input-group-sm" asp-controller="Task" asp-action="RemoveTask" asp-route-employeeId="@task.Id">
+                    <input class="fs-6 btn btn-success mb-3 p-2" type="submit" value="Remove" />
+                </form>
+
+                <a class="fs-6 btn btn-success mb-3 p-2" href="/Task/EditTAsk?id=@task.Id" aria-required="true">Edit</a>
 
             </div>
+        }
+    }
+    <h2 class="text-center"></h2>
+    <h2 class="text-center">Done tasks</h2>
+    @foreach (var task in Model)
+    {
+        if (task.IsCompleted == true)
+        {
+            <div class="card col-4" style="width: 20rem; ">
 
-            <form class="input-group-sm" asp-controller="Task" asp-action="RemoveTask" asp-route-employeeId="@task.Id">
+                <div class="card-body">
+
+                    <h5 class="card-title mt-1">@task.Title</h5>
+                    <h5 class="card-title mt-1">@task.Description</h5>
+                    <h5 class="card-title mt-1">@task.DueDate</h5>
+                    <h5 class="card-title mt-1">@task.Employee.FullName</h5>
+                </div>
+
+                <form class="input-group-sm" asp-controller="Task" asp-action="RemoveTask" asp-route-employeeId="@task.Id">
                     <input class="fs-6 btn btn-success mb-3 p-2" type="submit" value="Remove" />
-            </form>
+                </form>
 
-            <a class="fs-6 btn btn-success mb-3 p-2" href="/Task/EditTAsk?id=@task.Id" aria-required="true">Edit</a>
-
-        </div>
+            </div>
+        }
     }
 </div>
+
+
 

@@ -30,20 +30,37 @@ namespace Inter_Assignment.Services
             await context.SaveChangesAsync();
         }
 
-        public void EditTaskInformation(TaskViewModel targeTask)
+        public void EditTaskInformation(TaskViewModel targeTask, int IsCompletedId)
         {
-            var employee = context.Tasks.
+            var task = context.Tasks.
                Where(u => u.Id == targeTask.Id)
+               .Include(u => u.Employee)
                .FirstOrDefault();
 
-            if (employee == null)
+            if (task == null)
             {
                 throw new ArgumentException("Invalid Task");
             }
 
-            employee.Title = targeTask.Title;
-            employee.DueDate = targeTask.DueDate;
-            employee.Description = targeTask.Description;
+            if (IsCompletedId == 0)
+            {
+                targeTask.IsCompleted = false;
+            }
+            else
+            {
+                targeTask.IsCompleted = true;
+            }
+
+            task.Title = targeTask.Title;
+            task.DueDate = targeTask.DueDate;
+            task.Description = targeTask.Description;
+            task.IsCompleted = targeTask.IsCompleted;
+            
+
+            if (task.IsCompleted == true)
+            {
+                task.Employee.NumberOfCompletedTasks +=1;
+            }
 
             context.SaveChanges();
         }
@@ -62,26 +79,27 @@ namespace Inter_Assignment.Services
                     Description = m.Description,
                     DueDate = m.DueDate,
                     EmployeId = m.EmployeId,
-                    Employee = m.Employee
+                    Employee = m.Employee,
+                    IsCompleted = m.IsCompleted
                 });
         }
 
 
         public async Task<TaskViewModel> GetInformationForTask(int taskId)
         {
-            var taks = await context.Tasks
+            var task = await context.Tasks
                 .Where(u => u.Id == taskId)
                 .FirstOrDefaultAsync();
 
-
             var result = new TaskViewModel
             {
-                Id = taks.Id,
-                Title = taks.Title,
-                Description = taks.Description,
-                DueDate = taks.DueDate,
-                EmployeId = taks.EmployeId,
-                Employees = this.GetEmployeeAsync().Result
+                Id = task.Id,
+                Title = task.Title,
+                Description = task.Description,
+                DueDate = task.DueDate,
+                EmployeId = task.EmployeId,
+                Employees = this.GetEmployeeAsync().Result,
+                Employee = task.Employee,
             };
 
             return result;

@@ -13,23 +13,23 @@
         <form asp-action="EditTask" method="post">
 
             <div hidden>
-                <input asp-for="@Model.Id" class="form-control" aria-required="true"/>
+                <input asp-for="@Model.Id" class="form-control" aria-required="true" />
                 <span asp-validation-for="Id" class="text-danger"></span>
             </div>
 
             <div class="mb-3">
                 <label asp-for="@Model.Title" class="form-label">Title</label>
-                <input asp-for="@Model.Title" class="form-control" aria-required="true" placeholder=""/>
+                <input asp-for="@Model.Title" class="form-control" aria-required="true" placeholder="" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label asp-for="@Model.Description" class="form-label">Description</label>
-                <input asp-for="@Model.Description" class="form-control" aria-required="true" placeholder=""/>
+                <input asp-for="@Model.Description" class="form-control" aria-required="true" placeholder="" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label asp-for="@Model.DueDate" class="form-label">DueDate</label>
-                <input asp-for="@Model.DueDate" class="form-control" aria-required="true" placeholder=""/>
+                <input asp-for="@Model.DueDate" class="form-control" aria-required="true" placeholder="" />
                 <span asp-validation-for="DueDate" class="text-danger"></span>
             </div>
             <div class="mb-3">
@@ -42,6 +42,13 @@
                 </select>
                 <span asp-validation-for="EmployeId" class="text-danger"></span>
             </div>
+
+            <label class="form-label">Is task completed</label>
+            <select id='IsCompletedId' name='IsCompletedId'>
+                <option value='1'>True</option>
+                <option value='0'>False</option>
+            </select>
+
             <div class="mb-3">
                 <input class="btn btn-primary" type="submit" value="EditTask" />
             </div>
