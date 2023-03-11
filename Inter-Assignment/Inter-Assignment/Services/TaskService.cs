@@ -61,7 +61,8 @@ namespace Inter_Assignment.Services
                     Title = m.Title,
                     Description = m.Description,
                     DueDate = m.DueDate,
-                    EmployeId = m.EmployeId
+                    EmployeId = m.EmployeId,
+                    Employee = m.Employee
                 });
         }
 

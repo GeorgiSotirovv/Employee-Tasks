@@ -24,6 +24,6 @@ namespace Inter_Assignment.Data.Models
 
         [ForeignKey(nameof(EmployeId))]
 
-        public Employee? Employee { get; set; }
+        public Employee Employee { get; set; }
     }
 }
