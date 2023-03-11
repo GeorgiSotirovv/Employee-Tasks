@@ -26,7 +26,7 @@ namespace Inter_Assignment.Services
             {
                 Id = model.Id,
                 FullName = model.FullName,
-                Emial = model.Emial,
+                Email = model.Emial,
                 PhoneNumber = model.PhoneNumber,
                 DateOfBirth = model.DateOfBirth,
                 MonthlySalary = model.MonthlySalary
@@ -62,7 +62,7 @@ namespace Inter_Assignment.Services
 
             employee.FullName = targetEmployee.FullName;
             employee.DateOfBirth = targetEmployee.DateOfBirth;
-            employee.Emial = targetEmployee.Emial;
+            employee.Email = targetEmployee.Emial;
             employee.PhoneNumber = targetEmployee.PhoneNumber;
             employee.MonthlySalary = targetEmployee.MonthlySalary;
 
@@ -79,9 +79,9 @@ namespace Inter_Assignment.Services
                 {
                     Id = m.Id,
                     FullName = m.FullName,
-                    Emial = m.Emial,
+                    Emial = m.Email,
                     PhoneNumber = m.PhoneNumber,
-                    DateOfBirth = m.DateOfBirth,
+                    //DateOfBirth = DateTime.ToString(m.DateOfBirth),
                     MonthlySalary = m.MonthlySalary
                 });
         }
@@ -106,7 +106,7 @@ namespace Inter_Assignment.Services
             {
                 Id = employee.Id,
                 FullName = employee.FullName,
-                Emial = employee.Emial,
+                Emial = employee.Email,
                 PhoneNumber = employee.PhoneNumber,
                 DateOfBirth = employee.DateOfBirth,
                 MonthlySalary = employee.MonthlySalary
@@ -130,6 +130,25 @@ namespace Inter_Assignment.Services
             context.Employees.Remove(employee);
 
             await context.SaveChangesAsync();
+        }
+
+        public async Task<EmployeeReviewViewModel> GetReviewsAsync(int empId)
+        {
+            var employee = await context.Employees
+              .Where(u => u.Id == empId)
+              .Include(m => m.EmployeeReviews)
+              .FirstOrDefaultAsync();
+
+            if (employee == null)
+            {
+                throw new ArgumentException("Invalid ashtray Id");
+            }
+
+            return new EmployeeReviewViewModel()
+            {
+                EmployeeReviews = employee.EmployeeReviews,
+                EmployeId = employee.EmployeeId
+            };
         }
     }
 }

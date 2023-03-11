@@ -20,5 +20,7 @@ namespace Inter_Assignment.Services.Contracts
         public EmployeeReviewViewModel AddReview(EmployeeReviewViewModel targetEmployee);
 
         public Task<IEnumerable<Employee>> GetEmployeeAsync();
+
+        Task<EmployeeReviewViewModel> GetReviewsAsync(int empId);
     }
 }

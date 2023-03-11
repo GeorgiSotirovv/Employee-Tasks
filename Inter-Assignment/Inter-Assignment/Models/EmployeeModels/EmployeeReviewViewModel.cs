@@ -12,5 +12,7 @@ namespace Inter_Assignment.Models.EmployeeModels
         public string Review { get; set; }
 
         public IEnumerable<Employee> Employees { get; set; } = new List<Employee>();
+
+        public IEnumerable<EmployeeReview> EmployeeReviews { get; set; } = new List<EmployeeReview>();
     }
 }

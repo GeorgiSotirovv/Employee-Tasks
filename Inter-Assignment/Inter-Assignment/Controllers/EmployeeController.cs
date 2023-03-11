@@ -112,5 +112,14 @@ namespace Inter_Assignment.Controllers
 
             return RedirectToAction(nameof(Employees));
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Review(int Id)
+        {
+            var model = employeeService.GetReviewsAsync(Id).Result;
+            return View(model);
+        }
+
     }
 }

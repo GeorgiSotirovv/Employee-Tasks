@@ -25,7 +25,7 @@ namespace Inter_Assignment.Data.Models
 
         [Required]
 
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
 
         [Required]
         public double MonthlySalary { get; set; }
@@ -38,6 +38,6 @@ namespace Inter_Assignment.Data.Models
 
         [ForeignKey(nameof(EmployeeId))]
 
-        public IEnumerable<EmployeeReview> RmployeeReviews { get; set; } = new List<EmployeeReview>();
+        public IEnumerable<EmployeeReview> EmployeeReviews { get; set; } = new List<EmployeeReview>();
     }
 }

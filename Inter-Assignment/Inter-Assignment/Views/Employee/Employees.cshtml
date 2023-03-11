@@ -28,6 +28,10 @@
                 <input class="fs-6 btn btn-success mb-3 p-2" type="submit" value="Remove" />
             </form>
 
+            <form class="input-group-sm" asp-controller="Employee" asp-action="Review" asp-route-Id="@employee.Id">
+                <a class="fs-6 btn btn-success mb-3 p-2 " asp-controller="Employee" asp-action="Review" asp-route-Id="@employee.Id"    >Review</a>
+            </form>
+
             <a class="fs-6 btn btn-success mb-3 p-2" href="/Employee/EditEmployee?id=@employee.Id" aria-required="true">Edit</a>
 
         </div>

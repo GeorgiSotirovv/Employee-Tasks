@@ -4,6 +4,7 @@ using Inter_Assignment.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Inter_Assignment.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230310142543_Updates")]
+    partial class Updates
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,9 +32,8 @@ namespace Inter_Assignment.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("DateOfBirth")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -63,7 +64,7 @@ namespace Inter_Assignment.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateOfBirth = "10",
+                            DateOfBirth = new DateTime(2009, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "IvanDaviod@Gmail.com",
                             EmployeeId = 0,
                             FullName = "Ivan Davidov",
@@ -74,7 +75,7 @@ namespace Inter_Assignment.Data.Migrations
                         new
                         {
                             Id = 2,
-                            DateOfBirth = "10",
+                            DateOfBirth = new DateTime(2009, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "EmilYardanov@Gmail.com",
                             EmployeeId = 0,
                             FullName = "Emil Yardanov",
@@ -85,7 +86,7 @@ namespace Inter_Assignment.Data.Migrations
                         new
                         {
                             Id = 3,
-                            DateOfBirth = "10",
+                            DateOfBirth = new DateTime(2009, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "BorislavBetrov@Gmail.com",
                             EmployeeId = 0,
                             FullName = "Borislav Betrov",
@@ -96,7 +97,7 @@ namespace Inter_Assignment.Data.Migrations
                         new
                         {
                             Id = 4,
-                            DateOfBirth = "10",
+                            DateOfBirth = new DateTime(2009, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "DavidBatovski@Gmail.com",
                             EmployeeId = 0,
                             FullName = "David Batovski",

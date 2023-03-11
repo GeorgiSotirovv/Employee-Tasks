@@ -12,7 +12,7 @@ namespace Inter_Assignment.Models.EmployeeModels
        
         public string PhoneNumber { get; set; } = null!;
         
-        public string DateOfBirth { get; set; } = null!;
+        public string DateOfBirth { get; set; } 
         
         public double MonthlySalary { get; set; }
 

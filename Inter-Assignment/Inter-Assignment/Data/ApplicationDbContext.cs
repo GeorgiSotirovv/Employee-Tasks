@@ -2,6 +2,7 @@
 using Inter_Assignment.Data.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 namespace Inter_Assignment.Data
 {
@@ -29,9 +30,10 @@ namespace Inter_Assignment.Data
                 {
                     Id = 1,
                     FullName = "Ivan Davidov",
-                    Emial = "IvanDaviod@Gmail.com",
+                    Email = "IvanDaviod@Gmail.com",
                     PhoneNumber = "089453164",
-                    DateOfBirth = "05/05/2000",
+                    DateOfBirth = "10",
+                    //DateOfBirth = DateTime.ParseExact("09/01/2009", "d",CultureInfo.InvariantCulture),
                     MonthlySalary = 2800
                 },
 
@@ -39,9 +41,9 @@ namespace Inter_Assignment.Data
                 {
                     Id = 2,
                     FullName = "Emil Yardanov",
-                    Emial = "EmilYardanov@Gmail.com",
+                    Email = "EmilYardanov@Gmail.com",
                     PhoneNumber = "0897866941",
-                    DateOfBirth = "11/12/2001",
+                    DateOfBirth = "10",
                     MonthlySalary = 1700
                 },
 
@@ -49,9 +51,9 @@ namespace Inter_Assignment.Data
                 {
                     Id = 3,
                     FullName = "Borislav Betrov",
-                    Emial = "BorislavBetrov@Gmail.com",
+                    Email = "BorislavBetrov@Gmail.com",
                     PhoneNumber = "089666387",
-                    DateOfBirth = "05/05/2000",
+                    DateOfBirth = "10",
                     MonthlySalary = 5000
                 },
 
@@ -59,9 +61,9 @@ namespace Inter_Assignment.Data
                 {
                     Id = 4,
                     FullName = "David Batovski",
-                    Emial = "DavidBatovski@Gmail.com",
+                    Email = "DavidBatovski@Gmail.com",
                     PhoneNumber = "0897847519",
-                    DateOfBirth = "07/01/1995",
+                    DateOfBirth = "10",
                     MonthlySalary = 3500
                 });
 

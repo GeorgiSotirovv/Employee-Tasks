@@ -17,6 +17,9 @@ namespace Inter_Assignment.Data.Models
         [Required]
         public string DueDate { get; set; }
 
+        [Required]
+        public bool IsCompleted { get; set; }
+
         public int? EmployeId { get; set; }
 
         [ForeignKey(nameof(EmployeId))]
