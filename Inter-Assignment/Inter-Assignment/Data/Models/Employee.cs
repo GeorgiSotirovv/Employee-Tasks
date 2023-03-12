@@ -6,11 +6,6 @@ namespace Inter_Assignment.Data.Models
 {
     public class Employee
     {
-        //FullName
-        //Emial 
-        //Phone
-        //DateOfBirth
-        //MonthlySalary
         [Key]
         public int Id { get; set; }
 
@@ -40,5 +35,11 @@ namespace Inter_Assignment.Data.Models
         [ForeignKey(nameof(EmployeeId))]
 
         public IEnumerable<EmployeeReview> EmployeeReviews { get; set; } = new List<EmployeeReview>();
+
+        public int? EmployeId { get; set; }
+
+        [ForeignKey(nameof(EmployeId))]
+
+        public Task Task { get; set; }
     }
 }

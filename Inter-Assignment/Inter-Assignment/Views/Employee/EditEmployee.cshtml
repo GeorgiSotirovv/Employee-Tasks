@@ -8,7 +8,13 @@
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
-<div class="row">
+<div class="text-center row">
+    @if (TempData.ContainsKey(WebConstants.GlobalExeptionError))
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData[WebConstants.GlobalExeptionError]
+        </div>
+    }
     <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
         <form asp-action="EditEmployee" method="post">
 

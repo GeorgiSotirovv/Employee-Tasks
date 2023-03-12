@@ -1,7 +1,7 @@
 ﻿using Inter_Assignment.Models.EmployeeModels;
 using Inter_Assignment.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
+using static Inter_Assignment.WebConstants;
 
 namespace Inter_Assignment.Controllers
 {
@@ -14,6 +14,7 @@ namespace Inter_Assignment.Controllers
             employeeService = _EmployeeService;
         }
 
+        //This Action display all Employees
         [HttpGet]
         public async Task<IActionResult> Employees()
         {
@@ -23,12 +24,14 @@ namespace Inter_Assignment.Controllers
             return View(model);
         }
 
+        //This Action load the view of AddEmployee
         [HttpGet]
         public async Task<IActionResult> AddEmployee()
         {
             return View();
         }
 
+        //This Action add the newly created employee
         [HttpPost]
         public async Task<IActionResult> AddEmployee(EmployeeViewModel model)
         {
@@ -38,14 +41,17 @@ namespace Inter_Assignment.Controllers
 
                 return RedirectToAction(nameof(Employees));
             }
-            catch (Exception)
+            catch (Exception ex) 
             {
                 ModelState.AddModelError("", "Something went wrong");
+
+                TempData[GlobalExeptionError] = "You forgot to fill some field please try again";
 
                 return View(model);
             }
         }
 
+        //This Action remove Employee
         public async Task<IActionResult> RemoveEmployee(int employeeId)
         {
             await employeeService.RemoveEmployeeFromDatabaseAsync(employeeId);
@@ -53,6 +59,7 @@ namespace Inter_Assignment.Controllers
             return RedirectToAction(nameof(Employees));
         }
 
+        //This Action recive Id of the employee and load the model with the information for the employee
         [HttpGet]
         public async Task<IActionResult> EditEmployee(int Id)
         {
@@ -70,15 +77,10 @@ namespace Inter_Assignment.Controllers
             return View(model);
         }
 
-
+        //This Action edit the employeee
         [HttpPost]
         public IActionResult EditEmployee(int Id, EmployeeViewModel targetEmployee)
         {
-            if (targetEmployee == null)
-            {
-                return View();
-            }
-
             try
             {
                 employeeService.EditEmployeeInformation(targetEmployee);
@@ -89,10 +91,13 @@ namespace Inter_Assignment.Controllers
             {
                 ModelState.AddModelError("", "Something went wrong");
 
+                TempData[GlobalExeptionError] = "You forgot to fill some field please try again";
+
                 return View(targetEmployee);
             }
         }
 
+        //This Action show five empolyees with most compleeted tasks for last mounth
         [HttpGet]
         public async Task<IActionResult> EmployeStatistic()
         {
@@ -101,6 +106,7 @@ namespace Inter_Assignment.Controllers
             return View(targetEmployee);
         }
 
+        //This Action load the view AddAction
         [HttpGet]
         public async Task<IActionResult> AddReview()
         {
@@ -113,6 +119,7 @@ namespace Inter_Assignment.Controllers
             return View(model);
         }
 
+        //This action add review to employee
         [HttpPost]
         public IActionResult AddReview(EmployeeReviewViewModel model)
         {
@@ -126,11 +133,13 @@ namespace Inter_Assignment.Controllers
             {
                 ModelState.AddModelError("", "Something went wrong");
 
+                TempData[GlobalExeptionError] = "You forgot to fill some field please try again";
+
                 return RedirectToAction(nameof(AddReview));
             }
         }
 
-
+        //This Action recive Id of an employee and with it add review to the employee 
         [HttpGet]
         public async Task<IActionResult> Review(int Id)
         {

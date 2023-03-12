@@ -37,6 +37,9 @@ namespace Inter_Assignment.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("EmployeId")
+                        .HasColumnType("int");
+
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
@@ -55,6 +58,8 @@ namespace Inter_Assignment.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EmployeId");
 
                     b.ToTable("Employees");
 
@@ -397,6 +402,15 @@ namespace Inter_Assignment.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Inter_Assignment.Data.Models.Employee", b =>
+                {
+                    b.HasOne("Inter_Assignment.Data.Models.Task", "Task")
+                        .WithMany()
+                        .HasForeignKey("EmployeId");
+
+                    b.Navigation("Task");
                 });
 
             modelBuilder.Entity("Inter_Assignment.Data.Models.EmployeeReview", b =>

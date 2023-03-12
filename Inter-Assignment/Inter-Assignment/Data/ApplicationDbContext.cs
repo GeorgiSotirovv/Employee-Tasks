@@ -24,6 +24,7 @@ namespace Inter_Assignment.Data
             builder.Entity<Models.Task>()
                 .HasKey(x => new { x.Id });
 
+            //This is the seed data for database
             builder
                 .Entity<Employee>()
                 .HasData(new Employee()
@@ -34,8 +35,6 @@ namespace Inter_Assignment.Data
                     PhoneNumber = "089453164",
                     DateOfBirth = DateTime.ParseExact("2000-04-05", "yyyy-MM-dd", CultureInfo.InvariantCulture),
                     //DateOfBirth = DateTime.ParseExact("15/06/2015", "dd/MM/yyyy", null),
-                    //DateOfBirth = "2000/04/05",
-                    //DateOfBirth = new DateTime(2000, 2, 15),
                     MonthlySalary = 2800
                 },
 
