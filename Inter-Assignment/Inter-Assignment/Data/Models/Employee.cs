@@ -36,10 +36,5 @@ namespace Inter_Assignment.Data.Models
 
         public IEnumerable<EmployeeReview> EmployeeReviews { get; set; } = new List<EmployeeReview>();
 
-        public int? EmployeId { get; set; }
-
-        [ForeignKey(nameof(EmployeId))]
-
-        public Task Task { get; set; }
     }
 }

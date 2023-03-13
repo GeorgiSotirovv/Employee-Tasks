@@ -30,7 +30,6 @@
                     <h7 class="card-title mt-1">@task.DueDate</h7>
                     <h5 class="card-title mt-1">Assign to:</h5>
                     <h7 class="card-title mt-1">@task.Employee.FullName</h7>
-
                 </div>
 
                 <form class="input-group-sm" asp-controller="Task" asp-action="RemoveTask" asp-route-employeeId="@task.Id">

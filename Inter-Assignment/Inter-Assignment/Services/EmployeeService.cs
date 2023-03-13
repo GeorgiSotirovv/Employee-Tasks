@@ -30,7 +30,7 @@ namespace Inter_Assignment.Services
                 Email = model.Emial,
                 PhoneNumber = model.PhoneNumber,
                 DateOfBirth = model.DateOfBirth,
-                MonthlySalary = model.MonthlySalary,
+                MonthlySalary = model.MonthlySalary
             };
             await context.Employees.AddAsync(entity);
             await context.SaveChangesAsync();
@@ -65,6 +65,7 @@ namespace Inter_Assignment.Services
             employee.Email = targetEmployee.Emial;
             employee.PhoneNumber = targetEmployee.PhoneNumber;
             employee.MonthlySalary = targetEmployee.MonthlySalary;
+
             context.SaveChanges();
         }
 
@@ -88,19 +89,8 @@ namespace Inter_Assignment.Services
 
         public async Task<IEnumerable<Employee>> GetFiveEmployeeWithMostComplitedTasks()
         {
-            var time = new DateTime(2023, 03, 01);
-
-            var tu = await context.Tasks
-                .ToListAsync();
-
-            var kur = await context.Employees
-                .Include(x => x.Task)
-                .OrderByDescending(b => b.NumberOfCompletedTasks)
-                .Take(5)
-                .ToListAsync(); 
-
+            //need an improvement
             return await context.Employees
-                .Include(x => x.Task)
                 .OrderByDescending(b => b.NumberOfCompletedTasks)
                 .Take(5)
                 .ToListAsync();
@@ -151,7 +141,7 @@ namespace Inter_Assignment.Services
 
             if (employee == null)
             {
-                throw new ArgumentException("Invalid Id");
+                throw new ArgumentException("Invalid ashtray Id");
             }
 
             return new EmployeeReviewViewModel()

@@ -15,7 +15,7 @@ namespace Inter_Assignment.Models.EmployeeModels
 
         [Required]
         public string PhoneNumber { get; set; } = null!;
-        
+
         public DateTime DateOfBirth { get; set; }
 
         [Required]

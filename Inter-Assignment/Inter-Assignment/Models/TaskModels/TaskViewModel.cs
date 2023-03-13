@@ -22,6 +22,8 @@ namespace Inter_Assignment.Models.TaskModels
 
         public Employee Employee { get; set; }
 
+        public string EmployeeFullName { get; set; }
+
         public IEnumerable<Employee> Employees { get; set; } = new List<Employee>();
     }
 }

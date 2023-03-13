@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Inter_Assignment.Data.Migrations
 {
-    public partial class test : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,6 +46,25 @@ namespace Inter_Assignment.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Employees",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    MonthlySalary = table.Column<double>(type: "float", nullable: false),
+                    NumberOfCompletedTasks = table.Column<int>(type: "int", nullable: false),
+                    EmployeeId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Employees", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -166,26 +185,12 @@ namespace Inter_Assignment.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EmployeeReviews", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Employees",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MonthlySalary = table.Column<double>(type: "float", nullable: false),
-                    NumberOfCompletedTasks = table.Column<int>(type: "int", nullable: false),
-                    EmployeeId = table.Column<int>(type: "int", nullable: false),
-                    EmployeId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Employees", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EmployeeReviews_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -212,13 +217,13 @@ namespace Inter_Assignment.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Employees",
-                columns: new[] { "Id", "DateOfBirth", "Email", "EmployeId", "EmployeeId", "FullName", "MonthlySalary", "NumberOfCompletedTasks", "PhoneNumber" },
+                columns: new[] { "Id", "DateOfBirth", "Email", "EmployeeId", "FullName", "MonthlySalary", "NumberOfCompletedTasks", "PhoneNumber" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2000, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "IvanDaviod@Gmail.com", null, 0, "Ivan Davidov", 2800.0, 0, "089453164" },
-                    { 2, new DateTime(2001, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "EmilYardanov@Gmail.com", null, 0, "Emil Yardanov", 1700.0, 0, "0897866941" },
-                    { 3, new DateTime(1955, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "BorislavBetrov@Gmail.com", null, 0, "Borislav Petrov", 5000.0, 0, "089666387" },
-                    { 4, new DateTime(2022, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "DavidBatovski@Gmail.com", null, 0, "David Batovski", 3500.0, 1, "0897847519" }
+                    { 1, new DateTime(2000, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "IvanDaviod@Gmail.com", 0, "Ivan Davidov", 2800.0, 0, "089453164" },
+                    { 2, new DateTime(2001, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "EmilYardanov@Gmail.com", 0, "Emil Yardanov", 1700.0, 0, "0897866941" },
+                    { 3, new DateTime(1955, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "BorislavBetrov@Gmail.com", 0, "Borislav Petrov", 5000.0, 0, "089666387" },
+                    { 4, new DateTime(2022, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "DavidBatovski@Gmail.com", 0, "David Batovski", 3500.0, 1, "0897847519" }
                 });
 
             migrationBuilder.InsertData(
@@ -277,37 +282,13 @@ namespace Inter_Assignment.Data.Migrations
                 column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employees_EmployeId",
-                table: "Employees",
-                column: "EmployeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Tasks_EmployeId",
                 table: "Tasks",
                 column: "EmployeId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_EmployeeReviews_Employees_EmployeeId",
-                table: "EmployeeReviews",
-                column: "EmployeeId",
-                principalTable: "Employees",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Employees_Tasks_EmployeId",
-                table: "Employees",
-                column: "EmployeId",
-                principalTable: "Tasks",
-                principalColumn: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Tasks_Employees_EmployeId",
-                table: "Tasks");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -327,6 +308,9 @@ namespace Inter_Assignment.Data.Migrations
                 name: "EmployeeReviews");
 
             migrationBuilder.DropTable(
+                name: "Tasks");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
@@ -334,9 +318,6 @@ namespace Inter_Assignment.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Employees");
-
-            migrationBuilder.DropTable(
-                name: "Tasks");
         }
     }
 }

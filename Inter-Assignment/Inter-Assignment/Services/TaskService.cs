@@ -59,8 +59,10 @@ namespace Inter_Assignment.Services
 
             if (task.IsCompleted == true)
             {
-                task.Employee.NumberOfCompletedTasks +=1;
+                task.Employee.NumberOfCompletedTasks += 1;
             }
+
+            task.EmployeId = targeTask.EmployeId;
 
             context.SaveChanges();
         }
@@ -74,7 +76,7 @@ namespace Inter_Assignment.Services
             return task
                 .Select(m => new TaskViewModel()
                 {
-                    Id = m.Id,
+                      Id = m.Id,
                     Title = m.Title,
                     Description = m.Description,
                     DueDate = m.DueDate,
